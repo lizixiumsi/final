@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="css/html5reset.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<style>
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+div#video_player_box{ width:550px; margin:0px auto;}
+div#video_controls_bar{padding:10px;}
+
+</style>
+<title>Zixi Li - Photographer</title>
+</head>
+<body>
+
+<h1>I am a photographer</h1>
+
+<div class="row">
+  <div class="col-3 col-s-3 menu">
+    <ul>
+      <li class="current"><a href = "index.html">About</a></li>
+      <li><a href = "photography.html">Photography</a></li>
+      <li><a href = "bio.html">Biography</a></li>
+      <li><a href = "resume.html">Resume</a></li>
+    </ul>
+  </div>
+</div>
+<h2>Photographer secrets</h2>
+<button onclick="typeWriter()">Click me</button>
+<p id="demo"></p>
+
+
+
+
+<div class="col-4 col-s-5">
+  <h2>Welcome to my gallery.</h2>
+  <p>I am thrilled you’ve come to visit my showcase of work that I’ve compiled over the years, which includes a combination of collaborations, commissioned work and personal projects. Take a look and feel free to get in touch if you’d like to discuss potential opportunities to work together.</p>
+</div>
+<div class="col-4 col-s-5">
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <h2>Seeing the world through my lens</h2>
+        <img src="images/bio.jpg" alt="zixi" style="width:150px;height:200px;">
+      </div>
+      <div class="flip-card-back">
+        <h1>Zixi Li</h1>
+        <p>UX Designer & Photographer</p>
+        <p>We love that lady</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="callout">
+  <div class="callout-header">Callout Header</div>
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <div class="callout-container">
+    <p>Contact now and receive 10% off for your first photo order</p>
+  </div>
+</div>
+
+
+<button class="accordion">Landscape</button>
+<div class="panel">
+  <p>B&W, ELS/EWS, Abstract, City life</p>
+</div>
+
+<button class="accordion">People</button>
+<div class="panel">
+  <p>Tango dancers, friends and family, uniqueness</p>
+</div>
+<button class="accordion">Nature</button>
+<div class="panel">
+  <p>Trees, flowers, butterflies</p>
+</div>
+</body>
+
+<script>
+var i = 0;
+var txt = "My work is play. And I play when I design. I even looked it up in the dictionary, to make sure that I actually do that, and the definition of play, number one, was engaging in a childlike activity or endeavor, and number two was gambling. And I realize I do both when I'm designing. I'm both a kid and I'm gambling all the time.";
+var speed = 40;
+
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("demo").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+function playPause(btn,vid){
+	var vid = document.getElementById(vid);
+	if(vid.paused){
+		vid.play();
+		btn.innerHTML = "Pause";
+	} else {
+		vid.pause();
+		btn.innerHTML = "Play";
+	}
+}
+</script>
+
+<div id="video_player_box">
+  <video id="my_video" controls="controls" width="550" height="320">
+    <source src="Beatles.mp4">
+  </video>
+<div id="video_controls_bar">
+  <button id="playpausebtn" onclick="playPause(this,'my_video')">Pause</button>
+</div>
+</div>
+
+
+
+</html>
